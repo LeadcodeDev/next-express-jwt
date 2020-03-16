@@ -1,13 +1,11 @@
 import Router from 'next/router';
 import axios from 'axios';
 import { AUTHENTICATE, DEAUTHENTICATE } from '../types';
-import { API } from '../../config';
 import { setCookie, removeCookie, getCookie } from '../../utils/cookie';
-import { JwtDecode } from 'jwt-decode';
 
 const authenticate = ({ username, password }, type) => {
     return (dispatch) => {
-        axios.post(`${API}/${type}`, { username, password })
+        axios.post(`${process.env.API}/${type}`, { username, password })
             .then((response) => {
                 setCookie('token', response.data.token)
                 Router.push('/')

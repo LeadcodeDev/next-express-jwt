@@ -2,16 +2,18 @@ import { connect, useStore } from 'react-redux';
 import initialize from '../utils/initialize';
 import Layout from '../components/Layout';
 import AuthActions from '../redux/actions/authActions';
-import { findUser } from './../services/Users';
+import API from './../services/API';
 import { useEffect } from 'react';
 
 const Whoami = ({ user }) => {
     
+    // Recover the user with ID: 1
     const fetchUser = async () => {
-        await findUser(1)
+        await API.find('/users/' + 1)
             .then(datas => console.log(datas))
     }
 
+    // When the page loads, performs the indicated functions
     useEffect(() => {
         fetchUser()
     }, [])
@@ -30,7 +32,6 @@ const Whoami = ({ user }) => {
 
 Whoami.getInitialProps = async ctx => {
     initialize(ctx)
-    const token = ctx.store.getState().authentication.token
 }
 
 export default connect(state => state)(Whoami);

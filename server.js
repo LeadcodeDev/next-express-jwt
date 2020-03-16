@@ -1,6 +1,9 @@
 const express = require('express')
 const next = require('next')
 const cookieParser = require('cookie-parser')
+var dotenv = require('dotenv').config()
+const dotenvExpand = require('dotenv-expand')
+dotenvExpand(dotenv)
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -35,7 +38,7 @@ app.prepare()
 
         server.listen(port, (err) => {
             if (err) throw err
-            console.log(`> Ready on http://localhost:${port}`)
+            console.log(process.env.STARTING_MESSAGE)
         })
     })
     .catch((ex) => {
