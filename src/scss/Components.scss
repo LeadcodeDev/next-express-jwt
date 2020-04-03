@@ -1,0 +1,11 @@
+/*
+ * Creating a scss styling file for each component is a very good practice.
+ * Please import all your styles dedicated to your components here
+ */
+ 
+@import '../components/ActiveLinks/ActiveLinks';
+@import '../components/Breadcrumbs/Breadcumbs';
+@import '../components/Fields/Fields';
+@import '../components/Navbar/Navbar';
+@import '../components/Switch/Switch';
+@import '../components/Textarea/Textarea';
